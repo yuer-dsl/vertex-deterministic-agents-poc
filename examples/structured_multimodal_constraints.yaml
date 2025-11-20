@@ -1,0 +1,136 @@
+# ======================================================================
+#  Structured Multimodal Constraint Spec v1.0 (Public-Safe Version)
+#  Author: Yuer  
+#  Purpose:
+#     A minimal deterministic constraint schema for testing whether
+#     Gemini / Vertex AI multimodal agents can run under fixed rules,
+#     identity retention, and reproducible paths.
+#
+#  NOTE:
+#     This file intentionally exposes ONLY the "surface-level schema".
+#     It does NOT reveal EDCA-OS internals, DSL execution rules,
+#     or any part of the architecture that is legally or technically
+#     frozen. Safe to publish.
+# ======================================================================
+
+
+INTENT:
+  description: >
+    Ensure reproducible multi-modal behavior under deterministic,
+    constraint-driven execution (image → semantics → generation).
+
+  goal:
+    - preserve identity
+    - stabilize body geometry
+    - prevent multimodal drift
+    - force consistent execution path
+
+
+INPUT:
+  reference_image: required
+  prompt: optional
+  mode: "reference_guided"
+
+
+ANCHOR:
+  facial_identity:
+    required: true
+    tolerance: 0.10
+
+  pose_structure:
+    required: true
+    tolerance: 0.12
+
+  body_ratio:
+    target: 1.15
+    tolerance: 0.05
+
+  fat_layer_distribution:
+    upper_body: balanced_dense
+    abdomen: controlled_volume_soft_compression
+    legs: solid_support
+
+  fabric_tension_model:
+    waist_band: visible_tension
+    abdomen_cloth:
+      folds_density: medium_to_high
+      folds_direction: vertical_bias
+    thigh_cloth:
+      tension: medium_high
+
+
+SEMANTIC_RULES:
+  must_preserve:
+    - facial_identity
+    - pose_structure
+    - scene_context
+    - camera_angle
+
+  must_optimize:
+    - skin_tone_balance
+    - texture_realism
+    - facial_symmetry
+
+  must_not:
+    - slim_body
+    - heavy_stylization
+    - change_scene_to_outdoor
+    - over_emphasize_belly_volume
+
+
+SCENE_CONTEXT:
+  environment: indoor_living_room
+  elements:
+    - sofa
+    - blanket_pattern
+    - window_blinds
+
+  lighting:
+    type: soft_indoor_warm
+    key_to_fill_ratio: 0.6
+
+
+CONTROL:
+  deterministic_seed: 42
+  geometry_threshold: 0.80
+  semantic_drift_max: 0.15
+  aesthetic_target: 0.87
+  variations: 4
+  energy_budget: 2.0
+  stability_lambda: 0.92
+  allow_retries: false
+
+
+EXECUTION:
+  pipeline:
+    - validate_reference_image
+    - extract_semantics
+    - apply_constraints
+    - generate_variations
+    - score_outputs
+    - select_best
+
+  scoring_weights:
+    facial_identity: 0.45
+    geometry: 0.25
+    semantic_alignment: 0.20
+    aesthetic_quality: 0.10
+
+
+OUTPUT:
+  format: png
+  return:
+    - best_image
+    - geometry_score
+    - semantic_drift_score
+    - aesthetic_score
+    - decision_log
+
+
+SIGNATURE:
+  semantic_hash: "structured-multimodal-v1"
+  version: "1.0-public-safe"
+  declaration: >
+    This schema is a public-safe representation of deterministic
+    multimodal constraints. It demonstrates reproducibility testing
+    without disclosing EDCA-OS internal mechanisms or frozen components.
